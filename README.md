@@ -46,7 +46,21 @@ In order to get used to this workflow I need to be able to port my config to the
 ### Requirements
 - setup without root privilege:
 	- stow without root
-	- fish
+```
+apt download stow
+mkdir local_stow
+dpkg -x stow.... local_stow
+PERL5LIB=..../perl5 local_stow/..../bin/stow
+```
+- clone repo
 - install:
 	- [install miniconda](https://docs.conda.io/en/latest/miniconda.html)
 	- install base deps: 
+```
+conda env update -f dot_files/conda/base_requirements
+```
+- stow everything:
+```
+stow git tmux fish vim
+```
+
