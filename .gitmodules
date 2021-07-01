@@ -1,0 +1,9 @@
+[submodule "vim/.vim/pack/plugins/start/vim-tmux-navigator"]
+	path = vim/.vim/pack/plugins/start/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "vim/.vim/pack/plugins/start/vim-fugitive"]
+	path = vim/.vim/pack/plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/.vim/pack/plugins/start/vim-sensible"]
+	path = vim/.vim/pack/plugins/start/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
