@@ -7,3 +7,9 @@
 [submodule "vim/.vim/pack/plugins/start/vim-sensible"]
 	path = vim/.vim/pack/plugins/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
+[submodule "vim/.vim/pack/plugins/start/vim-tmux-yank"]
+	path = vim/.vim/pack/plugins/start/vim-tmux-yank
+	url = https://github.com/jabirali/vim-tmux-yank.git
+[submodule "vim/.vim/pack/plugins/start/vim-fish"]
+	path = vim/.vim/pack/plugins/start/vim-fish
+	url = https://github.com/dag/vim-fish.git

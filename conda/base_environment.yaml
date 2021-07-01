@@ -1,0 +1,8 @@
+channels:
+  - conda-forge
+dependencies:
+  - mamba=14
+  - fish=3.3
+  - tmux=3.1
+  - vim=8.2
+  - git=2.30

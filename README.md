@@ -39,6 +39,14 @@ In order to get used to this workflow I need to be able to port my config to the
 - conda project/python dependencies
 
 ### First step: improve vim-tmux compat
-- pane switching
-- clipboard sharing
-- tmux copy-mode
+- pane switching :check:
+- clipboard sharing :check:
+- tmux copy-mode :check:
+
+### Requirements
+- setup without root privilege:
+	- stow without root
+	- fish
+- install:
+	- [install miniconda](https://docs.conda.io/en/latest/miniconda.html)
+	- install base deps: 

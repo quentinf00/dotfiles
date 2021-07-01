@@ -1,0 +1,10 @@
+[user]
+	email = quentin.febvre@imt-atlantique.fr
+	name = Quentin Febvre
+[core]
+	editor = vim
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
