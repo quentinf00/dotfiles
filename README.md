@@ -64,3 +64,6 @@ conda env update -f dot_files/conda/base_requirements
 stow git tmux fish vim
 ```
 
+
+#### Opt
+install delta from [here](https://github.com/dandavison/delta#installation)
