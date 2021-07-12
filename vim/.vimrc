@@ -7,7 +7,10 @@ nnoremap <leader>f :GitFiles<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>t :Tags<cr>
 set nu rnu
+set t_Co=256
 set splitright splitbelow
 imap jk <Esc>
 imap kj <Esc>
 :command! -narg=+ Fsh :!fish -c '<args>'
+autocmd vimenter * ++nested colorscheme gruvbox
+set bg=dark
