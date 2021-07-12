@@ -7,6 +7,7 @@ nnoremap <leader>f :GitFiles<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>t :Tags<cr>
 set nu rnu
+set splitright splitbelow
 imap jk <Esc>
 imap kj <Esc>
 :command! -narg=+ Fsh :!fish -c '<args>'
