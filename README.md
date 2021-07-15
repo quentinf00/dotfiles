@@ -67,3 +67,20 @@ stow git tmux fish vim
 
 #### Opt
 install delta from [here](https://github.com/dandavison/delta#installation)
+
+
+### Possible next steps:
+- switch to neovim (lsp, neorg...)
+- switch to zsh (nested conda env)
+- add ansible support to provision everything
+	- micromamba
+	- create conda env
+	- stow
+	- nvim
+	- delta
+	- oh my zsh
+
+- Jupyter workflow without notebooks:
+	- create ipython console
+	- when wanting to display something:
+		- start qt console with `jupyter qtconsole  --existing ... --JupyterWidget.include_other_output=True`

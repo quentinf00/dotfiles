@@ -22,3 +22,15 @@
 [submodule "vim/.vim/pack/plugins/start/gruvbox"]
 	path = vim/.vim/pack/plugins/start/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
+[submodule "vim/.vim/pack/plugins/start/vim-vinegar"]
+	path = vim/.vim/pack/plugins/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+[submodule "vim/.vim/pack/plugins/start/vim-sneak"]
+	path = vim/.vim/pack/plugins/start/vim-sneak
+	url = https://github.com/justinmk/vim-sneak.git
+[submodule "vim/.vim/pack/plugins/start/vim-surround"]
+	path = vim/.vim/pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/.vim/pack/plugins/start/vim-commentary"]
+	path = vim/.vim/pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
