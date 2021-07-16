@@ -34,3 +34,6 @@
 [submodule "vim/.vim/pack/plugins/start/vim-commentary"]
 	path = vim/.vim/pack/plugins/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
+[submodule "zsh/ohmyzsh"]
+	path = zsh/ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
