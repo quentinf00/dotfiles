@@ -65,6 +65,40 @@ stow git tmux fish vim
 ```
 
 
+#### Install steps
+```bash
+sequence:
+micromamba
+neovim
+stow
+
+repo
+```bash
+wget https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
+chmod u+x nvim.appimage
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh -O ~/miniconda.sh
+bash ~/miniconda.sh -b -p $HOME/miniconda
+
+wget https://raw.githubusercontent.com/quentinf00/dotfiles/conda/base_environment.yaml -O conda_ide.yaml
+eval "$($HOME/miniconda/condabin/conda shell.bash hook)"
+conda install -y mamba -c conda-forge
+mamba env update -f conda_ide.yaml
+
+
+wget https://ftp.gnu.org/gnu/stow/stow-latest.tar.gz
+tar -xvf stow-latest.tar.gz
+./configure
+cd
+
+git clone https://github.com/quentinf00/dotfiles.git
+cd dotfiles
+git submodule update --init --recursive
+stow zsh tmux vim git nvim sh
+
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+```
+
 #### Opt
 install delta from [here](https://github.com/dandavison/delta#installation)
 

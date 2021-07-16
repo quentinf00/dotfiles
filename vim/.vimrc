@@ -1,5 +1,6 @@
 let mapleader="\<Space>"
 set clipboard=unnamedplus
+set autowrite
 nnoremap <leader>d "_d
 nnoremap <leader>w :w<cr>
 nnoremap <leader>s :source ~/.vimrc<cr>
