@@ -1,11 +1,11 @@
+name: ide
 channels:
   - conda-forge
 dependencies:
-  - mamba=0.14
+  - mamba=0.15
   - fish=3.3
   - fd-find=8.2
   - tmux=3.1
-  - vim=8.2
   - git=2.30
   - fzf=0.27.2
   - ripgrep=13.0
