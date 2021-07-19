@@ -3,9 +3,9 @@
 
 alias v=~/nvim.appimage
 export EDITOR=v
-alias tmux=SHELL='$(which zsh) tmux new -As home'
+alias t=SHELL='$(which zsh) tmux new -As home'
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/oh-my-zsh"
+export ZSH="$HOME/ohmyzsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -71,7 +71,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git z)
 
 source $ZSH/oh-my-zsh.sh
 
