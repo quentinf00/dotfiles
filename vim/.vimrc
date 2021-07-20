@@ -4,9 +4,10 @@ set autowrite
 nnoremap <leader>d "_d
 nnoremap <leader>w :w<cr>
 nnoremap <leader>s :source ~/.vimrc<cr>
-nnoremap <leader>gf :GitFiles<cr>
-nnoremap <leader>f :Files<cr>
+nnoremap <leader>f :GitFiles<cr>
+nnoremap <leader>F :Files<cr>
 nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>/ :BLines<cr>
 nnoremap <leader>t :Tags<cr>
 set nu rnu
 set t_Co=256
@@ -20,3 +21,7 @@ set foldmethod=manual
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
+nnoremap <leader>j lnext
+nnoremap <leader>k lprevious
+nnoremap <C-j> cnext
+nnoremap <C-k> cprevious
