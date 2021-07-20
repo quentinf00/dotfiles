@@ -1,0 +1,19 @@
+session_name: local_dev
+shell_command_before: 
+- conda activate --stack 4dvarnet
+start_directory: research/4dvarnet-core
+windows:
+  - window_name: editor
+    panes:
+    - shell_command: v -c 'G | wincmd o' .
+  - window_name: python
+    panes:
+    - shell_command: jupyter console -f '~/local-kernel.json'
+  - window_name: qt
+    panes:
+    - shell_command: 
+      - > 
+        jupyter qtconsole 
+        --existing=~/local-kernel.json 
+        --ConsoleWidget.include_other_output=True
+
