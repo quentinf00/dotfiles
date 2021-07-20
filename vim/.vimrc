@@ -18,3 +18,5 @@ autocmd vimenter * ++nested colorscheme gruvbox
 set bg=dark
 set foldmethod=manual
 
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+

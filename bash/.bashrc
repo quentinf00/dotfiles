@@ -1,4 +1,4 @@
-#!/bin/bash
-eval $(miniconda/condabin/conda shell.bash hook)
-[[ -z "${TMUX}" ]] && SHELL=$(which zsh) tmux -2 new -As -t home
+alias v=~/nvim.appimage
+export EDITOR=v
+alias t=SHELL='$(which zsh) tmux new -As home'
 
