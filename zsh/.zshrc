@@ -110,7 +110,7 @@ if [ -f "~/.condainitzshrc" ]; then
 fi
 
 
-if [ -e `which thefuck` ]; then
+if [ -e "`which thefuck`" ]; then
 	eval $(thefuck --alias)
 fi
 
