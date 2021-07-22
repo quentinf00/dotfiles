@@ -3,7 +3,6 @@
 
 alias v=~/nvim.appimage
 export EDITOR=v
-alias t=SHELL='$(which zsh) tmux new -As home'
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.zsh/ohmyzsh"
 
@@ -106,4 +105,12 @@ source $ZSH/oh-my-zsh.sh
 #
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.condainitrc
+if [ -f ~/.condainitzshrc ]; then
+	source ~/.condainitzshrc
+fi
+
+
+if [ -e `which thefuck` ]; then
+	eval $(thefuck --alias)
+fi
+

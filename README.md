@@ -96,7 +96,6 @@ cd dotfiles
 git submodule update --init --recursive
 stow zsh tmux vim git nvim sh
 
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 ```
 
 #### Opt
