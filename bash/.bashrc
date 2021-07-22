@@ -1,11 +1,11 @@
 #!/bin/bash
 
-alias t=SHELL='$(which zsh) tmux new -As home'
+alias t=SHELL='$(which zsh) tmux -2 new -As home'
 
-if [ -f ~/.condainitrc ]; then
+if [ -f "~/.condainitrc" ]; then
 	source ~/.condainitrc
 fi
 
-if [ -e "`which tmux`" -e "`which zsh`" -a "$PS1" != "" -a "$TMUX" == "" -a "${SSH_TTY:-x}" != x ]; then
+if [  "`which tmux`" ] && [ "`which zsh`" ]  && [ "$TMUX" == "" ]; then
 	t
 fi
