@@ -105,7 +105,7 @@ source $ZSH/oh-my-zsh.sh
 #
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-if [ -f "~/.condainitzshrc" ]; then
+if [ -f "$HOME/.condainitzshrc" ]; then
 	source ~/.condainitzshrc
 fi
 
