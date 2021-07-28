@@ -23,7 +23,7 @@ init_conda_env(){
 	wget https://raw.githubusercontent.com/quentinf00/dotfiles/main/conda/base_environment.yaml -O conda_ide.yaml
 	eval "$($MINICONDA_PREFIX/condabin/conda shell.bash hook)"
 	conda install -y mamba -c conda-forge
-	mamba env update -f conda_ide.yaml -y
+	mamba env update -f conda_ide.yaml
 	rm -f ~/.zshrc ~/.bashrc
 	conda init && mv ~/.bashrc ~/.condainitrc
 	conda init zsh && mv ~/.zshrc ~/.condainitzshrc

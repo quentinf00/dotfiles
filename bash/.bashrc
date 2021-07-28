@@ -2,7 +2,7 @@
 
 alias t=SHELL='$(which zsh) tmux -2 new -As home'
 
-if [ -f "~/.condainitrc" ]; then
+if [ -f "$HOME/.condainitrc" ]; then
 	source ~/.condainitrc
 fi
 
