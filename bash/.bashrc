@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias t=SHELL='$(which zsh) tmux -2 new -As home'
+alias t=SHELL='$(which zsh) tmux new -As home'
 
 if [ -f "$HOME/.condainitrc" ]; then
 	source ~/.condainitrc

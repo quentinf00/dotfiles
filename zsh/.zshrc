@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 alias v=~/nvim.appimage
+alias vg="v -c 'G | wincmd o'"
 export EDITOR=v
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.zsh/ohmyzsh"
