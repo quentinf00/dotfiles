@@ -3,8 +3,8 @@ channels:
 dependencies:
   - fd-find=8.2
   - tmux=3.1
-  - vim=8.2
-  - git=2.30
+  # - vim=8.2
+  # - git=2.30
   - fzf=0.27.2
   - ripgrep=13.0
   - bat=0.18

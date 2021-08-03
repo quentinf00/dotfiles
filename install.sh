@@ -31,18 +31,21 @@ init_conda_env(){
 
 
 install_stow(){
-	wget $STOW_URL
-	tar -xvf $STOW_PKG.tar.gz
-	cd $STOW_PKG
-	./configure
-	make install
-	alias stow="PERL5LIB=$(pwd)/lib $(pwd)/bin/stow"
-	cd
+	PERL_MM_USE_DEFAULT=1 cpan Stow
 }
 
 stow_everything(){
 	git clone --recurse-submodules --shallow-submodules --depth 1 https://github.com/quentinf00/dotfiles.git
 	cd dotfiles
 	stow zsh tmux vim git nvim bash
+}
+
+
+run_everything(){
+	set_up_nvim
+	install_miniconda
+	init_conda_env
+	install_stow
+	stow_everything
 }
 
