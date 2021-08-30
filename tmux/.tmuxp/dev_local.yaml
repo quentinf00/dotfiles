@@ -5,7 +5,7 @@ start_directory: research/4dvarnet-core
 windows:
   - window_name: editor
     panes:
-    - shell_command: v -c 'G | wincmd o' .
+    - shell_command: vg
   - window_name: python
     panes:
     - shell_command: jupyter console -f '~/local-kernel.json'

@@ -2,6 +2,7 @@ channels:
   - conda-forge
   - quentinf00
 dependencies:
+  - pip
   - pyright
   - fd-find=8.2
   - tmux=3.1
@@ -11,3 +12,6 @@ dependencies:
   - ripgrep=13.0
   - bat=0.18
   - zsh=5.6
+  - pip:
+    - tmuxp
+    - thefuck

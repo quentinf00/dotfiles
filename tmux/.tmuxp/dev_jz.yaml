@@ -1,0 +1,11 @@
+session_name: jz_dev
+shell_command_before: 
+- conda activate --stack 4dvarnet
+start_directory: research/4dvarnet-core
+windows:
+  - window_name: vpn
+    panes:
+    - shell_command: sshpass -p$(gpg -d imt-proxy.pass.gpg) sshuttle --dns -HN @vpn_imt.conf
+  - window_name: jeanzay
+    panes:
+    - shell_command: tl _jz

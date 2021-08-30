@@ -1,10 +1,11 @@
 let mapleader="\<Space>"
 set clipboard=unnamedplus
-set autowrite
+set hidden
 nnoremap <leader>d "_d
 nnoremap <leader>w :w<cr>
 nnoremap <leader>s :source ~/.vimrc<cr>
 nnoremap <leader>f :GitFiles<cr>
+nnoremap <leader>h :History<cr>
 nnoremap <leader>F :Files<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>/ :BLines<cr>
@@ -14,7 +15,6 @@ set t_Co=256
 set splitright splitbelow
 imap jk <Esc>
 imap kj <Esc>
-:command! -narg=+ Fsh :!fish -c '<args>'
 autocmd vimenter * ++nested colorscheme gruvbox
 set bg=dark
 set foldmethod=manual

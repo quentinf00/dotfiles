@@ -3,6 +3,7 @@
 
 alias v=~/nvim.appimage
 alias vg="v -c 'G | wincmd o'"
+alias tl="fd . ~/.tmuxp  | fzf | xargs tmuxp load -y"
 export EDITOR=v
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.zsh/ohmyzsh"
@@ -110,8 +111,5 @@ if [ -f "$HOME/.condainitzshrc" ]; then
 	source ~/.condainitzshrc
 fi
 
-
-if [ -e "`which thefuck`" ]; then
-	eval $(thefuck --alias)
-fi
+eval "$(_TMUXP_COMPLETE=source_zsh tmuxp)"
 
