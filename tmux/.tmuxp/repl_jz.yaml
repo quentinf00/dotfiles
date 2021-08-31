@@ -1,0 +1,9 @@
+session_name: repl_jz
+windows:
+  - window_name: repl
+    panes:
+    - shell_command: |
+        salloc --ntasks=1 --cpus-per-task=10 --gres=gpu:1 --hint=nomultithread -C v100-16g --qos=qos_gpu-dev -A yrf@gpu --time=02:00:00 --job-name=repl
+        squeue -u $USER -h | grep repl | awk '{print $NF}' > ~/repl.node
+        ssh $(cat ~/repl.node) -o StrictHostKeyChecking=no
+        conda activate --stack 4dvarnet
