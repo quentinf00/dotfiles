@@ -8,4 +8,7 @@ windows:
     panes:
     - shell_command: |
        scp jeanzay1:jz_kernel.json .
+       sleep 2
+       ssh ual82ir@$(ssh jeanzay1 'cat interactive_job.ip') -o StrictHostKeyChecking=no 'pwd'
+       sleep 2
        jupyter qtconsole --ssh=ual82ir@$(ssh jeanzay1 'cat interactive_job.ip') --existing=jz_kernel.json --ConsoleWidget.include_other_output=True

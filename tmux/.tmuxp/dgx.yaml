@@ -1,0 +1,10 @@
+session_name: dgx
+windows:
+  - window_name: vpn
+    panes:
+    - shell_command: /opt/pulsesecure/bin/pulselauncher -U https://domicile.ifremer.fr/calcul -r vpn-Ifremer -u qf32087 -p $(gpg -d ifremer.pass.gpg)
+  - window_name: ssh_dgx
+    panes:
+    - shell_command: |
+       sleep 3
+       ssh ifredgx -L 8888:localhost:8888 -t 'bash'

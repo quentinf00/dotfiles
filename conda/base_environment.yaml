@@ -4,6 +4,7 @@ channels:
 dependencies:
   - pip
   - pyright
+  - tree
   - fd-find=8.2
   - tmux=3.1
   # - vim=8.2
@@ -15,4 +16,5 @@ dependencies:
   - zsh=5.6
   - pip:
     - tmuxp
+    - tldr
     - thefuck
