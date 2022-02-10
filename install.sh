@@ -10,6 +10,7 @@ STOW_URL="https://ftp.gnu.org/gnu/stow/$STOW_PKG.tar.gz"
 set_up_nvim(){
 	wget $NVIM_APP_IMAGE_URL -O ~/nvim.appimage
 	chmod u+x ~/nvim.appimage
+	~/nvim.appimage -c 'PlugInstall | qa'
 }
 
 install_miniconda(){
