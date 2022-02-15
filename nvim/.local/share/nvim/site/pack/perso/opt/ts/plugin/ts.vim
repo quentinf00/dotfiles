@@ -1,7 +1,14 @@
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
 
-  ensure_installed = { "norg", "norg_meta", "norg_table", "python", "latex", "javascript", "markdown" },
+  ensure_installed = {
+--	  "norg",
+--	  "norg_meta",
+--	  "norg_table",
+	  "python",
+	  "latex",
+	  "javascript",
+	  "markdown" },
   highlight = { -- Be sure to enable highlights if you haven't!
 	enable = true,
   }, 
