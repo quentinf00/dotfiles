@@ -1,5 +1,5 @@
 packadd! lsp
-packadd! neorg
+" packadd! neorg
 packadd! ts
 
 let mapleader="\<Space>"
@@ -37,7 +37,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'RRethy/nvim-treesitter-textsubjects'
 " Plug 'ojroques/vim-oscyank'
-Plug 'nvim-neorg/neorg'
+" Plug 'nvim-neorg/neorg'
 call plug#end()
 
 
