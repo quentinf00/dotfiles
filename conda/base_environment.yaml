@@ -5,6 +5,7 @@ dependencies:
   - pip
   - pyright
   - tree
+  - visidata
   - fd-find=8.2
   - tmux=3.1
   # - vim=8.2

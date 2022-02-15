@@ -1,4 +1,5 @@
 packadd! lsp
+packadd! neorg
 packadd! ts
 
 let mapleader="\<Space>"
@@ -35,17 +36,11 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'RRethy/nvim-treesitter-textsubjects'
-" Plug 'nvim-neorg/neorg'
+" Plug 'ojroques/vim-oscyank'
+Plug 'nvim-neorg/neorg'
 call plug#end()
 
 
-" lua << EOF
-"
-
-" require('neorg').setup {
-"     ...
-" }
-" EOF
 
 " y:w^M'Ti^C^M^M^\^Npi^M^M^\^N^^'>                                                                                                                                                                     
  " :w^M'Ti%run ^\^N"#pi^Mlocals().update(main())^M^\^N^^  

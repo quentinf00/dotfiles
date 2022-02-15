@@ -1,6 +1,10 @@
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
 
+  ensure_installed = { "norg", "norg_meta", "norg_table", "python", "latex", "javascript", "markdown" },
+  highlight = { -- Be sure to enable highlights if you haven't!
+	enable = true,
+  }, 
   textsubjects = {
         enable = true,
         prev_selection = ',', -- (Optional) keymap to select the previous selection
@@ -15,20 +19,20 @@ require'nvim-treesitter.configs'.setup {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
-        ["<leader>>f"] = "@function.outer",
-        ["<leader>>c"] = "@class.outer",
+        ["<leader>;f"] = "@function.outer",
+        ["<leader>;c"] = "@class.outer",
       },
       goto_next_end = {
-        ["<leader>>F"] = "@function.outer",
-        ["<leader>>C"] = "@class.outer",
+        ["<leader>;F"] = "@function.outer",
+        ["<leader>;C"] = "@class.outer",
       },
       goto_previous_start = {
-        ["<leader><f"] = "@function.outer",
-        ["<leader><c"] = "@class.outer",
+        ["<leader>,f"] = "@function.outer",
+        ["<leader>,c"] = "@class.outer",
       },
       goto_previous_end = {
-        ["<leader><F"] = "@function.outer",
-        ["<leader><C"] = "@class.outer",
+        ["<leader>,F"] = "@function.outer",
+        ["<leader>,C"] = "@class.outer",
       },
     },
     select = {
