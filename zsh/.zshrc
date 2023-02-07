@@ -7,6 +7,7 @@ alias tl="fd . ~/.tmuxp  | fzf | xargs tmuxp load -y"
 export EDITOR=v
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.zsh/ohmyzsh"
+export FZF_BASE=$CONDA_PREFIX/share/fzf
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -75,8 +76,9 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
 	git
 	z
+	fzf
+	jq
 )
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

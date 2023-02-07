@@ -2,6 +2,7 @@ packadd! lsp
 " packadd! neorg
 packadd! ts
 
+
 let mapleader="\<Space>"
 set clipboard=unnamedplus
 set hidden
@@ -36,6 +37,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'RRethy/nvim-treesitter-textsubjects'
+Plug 'mbbill/undotree'
 " Plug 'ojroques/vim-oscyank'
 " Plug 'nvim-neorg/neorg'
 call plug#end()

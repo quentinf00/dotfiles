@@ -2,9 +2,15 @@
 	email = quentin.febvre@imt-atlantique.fr
 	name = Quentin Febvre
 [core]
-	editor = vim
+	editor = /home3/datahome/qfebvre/nvim.appimage
 [alias]
 	co = checkout
 	br = branch
 	ci = commit
 	st = status
+[credential "https://github.com"]
+	helper = 
+	helper = !/raid/localscratch/qfebvre/miniconda/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/raid/localscratch/qfebvre/miniconda/bin/gh auth git-credential
