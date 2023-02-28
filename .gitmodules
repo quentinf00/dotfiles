@@ -64,3 +64,6 @@
 [submodule "nvim/.local/share/nvim/site/pack/plugins/opt/firenvim"]
 	path = nvim/.local/share/nvim/site/pack/plugins/opt/firenvim
 	url = https://github.com/glacambre/firenvim.git
+[submodule "zsh/.zsh/custom/plugins/jq"]
+	path = zsh/.zsh/custom/plugins/jq
+	url = https://github.com/reegnz/jq-zsh-plugin.git
