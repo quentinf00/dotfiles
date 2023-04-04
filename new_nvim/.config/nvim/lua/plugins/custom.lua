@@ -1,6 +1,8 @@
 return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
+  { "github/copilot.vim" },
+  { "kkoomen/vim-doge" },
 
   -- Configure LazyVim to load gruvbox
   {
@@ -10,9 +12,24 @@ return {
     },
   },
 
+  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+  { "stevearc/oil.nvim", config = true },
+
   { "echasnovski/mini.pairs", enabled = false },
   { "echasnovski/mini.surround", enabled = false },
-  { "kylechui/nvim-surround", opts = { keymaps = { normal = "yz" } } },
+  {
+    "kylechui/nvim-surround",
+    opts = {
+      keymaps = {
+        normal = "yz",
+        normal_cur = "yzz",
+        normal_line = "yZ",
+        normal_cur_line = "yZZ",
+        visual = "Z",
+        visual_line = "gZ",
+      },
+    },
+  },
   -- change trouble config
   --
   {
