@@ -3,6 +3,7 @@ return {
   { "ellisonleao/gruvbox.nvim" },
   { "github/copilot.vim" },
   { "kkoomen/vim-doge" },
+  { "ThePrimeagen/harpoon" },
 
   -- Configure LazyVim to load gruvbox
   {
@@ -15,6 +16,7 @@ return {
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   { "stevearc/oil.nvim", config = true },
 
+  { "L3MON4D3/LuaSnip", enabled = false },
   { "echasnovski/mini.pairs", enabled = false },
   { "echasnovski/mini.surround", enabled = false },
   {
@@ -27,6 +29,8 @@ return {
         normal_cur_line = "yZZ",
         visual = "Z",
         visual_line = "gZ",
+        delete = "dz",
+        change = "cz",
       },
     },
   },
