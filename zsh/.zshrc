@@ -1,7 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-alias v=~/nvim.appimage
+export PATH=$PATH:/home/qfebvre/squashfs-root/usr/bin
+alias v=nvim
 alias vg="v -c 'G | wincmd o'"
 alias tl="fd . ~/.tmuxp  | fzf | xargs tmuxp load -y"
 export EDITOR=v
@@ -14,7 +15,7 @@ export FZF_BASE=$CONDA_PREFIX/share/fzf
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="random"
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -78,7 +79,7 @@ plugins=(
 	git
 	z
 	fzf
-	jq
+	# jq
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -116,5 +117,4 @@ if [ -f "$HOME/.condainitzshrc" ]; then
 	source ~/.condainitzshrc
 fi
  
-eval "$(_TMUXP_COMPLETE=source_zsh tmuxp)"
 

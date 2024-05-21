@@ -9,3 +9,4 @@ fi
 if [  "`which tmux`" ] && [ "`which zsh`" ]  && [ "$TMUX" == "" ]; then
 	t
 fi
+. "$HOME/.cargo/env"
