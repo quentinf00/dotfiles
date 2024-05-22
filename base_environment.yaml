@@ -1,0 +1,21 @@
+dependencies:
+  - zsh
+  - gcc
+  - nodejs
+  - make
+  - cmake
+  - git
+  - gh
+  - tmux
+  - tree
+  - fzf
+  - ripgrep
+  - bat
+  - fd-find
+  - pip
+  - pip:
+    - tmuxp
+    - tldr
+    - thefuck
+
+
