@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export PATH=$PATH:/home/qfebvre/squashfs-root/usr/bin
+export PATH=$PATH:$HOME/squashfs-root/usr/bin
 alias v=nvim
 alias vg="v -c 'G | wincmd o'"
 alias tl="fd . ~/.tmuxp  | fzf | xargs tmuxp load -y"
