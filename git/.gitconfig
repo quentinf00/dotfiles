@@ -14,3 +14,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/raid/localscratch/qfebvre/miniconda/bin/gh auth git-credential
+[init]
+	defaultBranch = main
