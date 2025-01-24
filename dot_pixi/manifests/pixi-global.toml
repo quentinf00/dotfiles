@@ -1,0 +1,6 @@
+version = 1
+
+[envs.zsh]
+channels = ["conda-forge"]
+dependencies = { zsh = "*" }
+exposed = { zsh = "zsh", "zsh-5.9" = "zsh-5.9" }
