@@ -1,0 +1,14 @@
+#!/bin/bash
+
+alias t='$(which zsh) tmux new -As home'
+
+if [ -f "$HOME/.condainitrc" ]; then
+	source ~/.condainitrc
+fi
+
+if [  "`which tmux`" ] && [ "`which zsh`" ]  && [ "$TMUX" == "" ]; then
+	t
+fi
+if [ -f "$HOME/.cargo/env" ]; then
+	source ~/.condainitrc
+fi

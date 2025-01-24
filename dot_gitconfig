@@ -1,0 +1,21 @@
+[user]
+	email = quentin.febvre@imt-atlantique.fr
+	name = Quentin Febvre
+[core]
+	editor = nvim
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !gh auth git-credential
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
