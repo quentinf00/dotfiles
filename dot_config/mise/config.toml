@@ -1,12 +1,10 @@
 [tools]
 neovim = "latest"
-make = "latest"
 fzf = "latest"
 node = "latest"
 tmux = "latest"
 bat = "latest"
 jq =  "latest"
-dvc = "latest"
 gh = "latest"
 aws-cli = "latest"
 chezmoi = "latest"
