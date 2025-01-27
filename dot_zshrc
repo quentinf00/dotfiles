@@ -1,11 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# eval "$(pixi completion --shell bash)"
+eval "$(~/.local/bin/mise activate zsh)"
 alias v=nvim
 alias vg="v -c 'G | wincmd o'"
 alias tl="fd . ~/.tmuxp  | fzf | xargs tmuxp load -y"
-export EDITOR=v
+export EDITOR=nvim
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.zsh/ohmyzsh"
 export ZSH_CUSTOM="$HOME/.zsh/custom"

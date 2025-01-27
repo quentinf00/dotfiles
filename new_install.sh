@@ -46,3 +46,13 @@ else
 fi
 
 
+
+echo "######"
+echo "###### Install 5 \t\t: Installing and activating mise"
+echo "######"
+if is_exe mise; then
+	echo "Mise already installed"
+else
+	curl https://mise.run | sh
+	eval "$(~/.local/bin/mise activate bash)"
+fi
