@@ -11,7 +11,7 @@ echo "###### Install 1 \t\t: Installing and activating mise"
 echo "######"
 if is_exe mise; then
 	echo "Mise already installed"
-else:
+else
 	curl https://mise.run | sh
 	eval "$(~/.local/bin/mise activate bash)"
 fi
@@ -22,7 +22,7 @@ echo "######"
 
 if is_exe chezmoi; then
 	echo "Chezmoi already installed"
-else:
+else
 	mise use --env local chezmoi
 	eval "$(~/.local/bin/mise activate bash)"
 	chezmoi init -v quentinf00 
