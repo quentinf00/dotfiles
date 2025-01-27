@@ -19,7 +19,7 @@ export FZF_BASE=$CONDA_PREFIX/share/fzf
 # ZSH_THEME="afowler"
 
 
-ZSH_THEME="$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+ZSH_THEME="powerlevel10k"
 
 
 
@@ -115,8 +115,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/.zsh-syntax-highlighting.zsh
-source $HOME/.oh-my-zsh/custom/plugins/zsh-auto-suggestion/.zsh-auto-suggestion.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-auto-suggestion/zsh-auto-suggestion.zsh
 
 if [ -f "$HOME/.condainitzshrc" ]; then
 	source ~/.condainitzshrc
