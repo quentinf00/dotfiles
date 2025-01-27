@@ -16,7 +16,12 @@ export FZF_BASE=$CONDA_PREFIX/share/fzf
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="agnoster"
-ZSH_THEME="afowler"
+# ZSH_THEME="afowler"
+
+
+ZSH_THEME="$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -110,8 +115,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/.zsh-syntax-highlighting.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-auto-suggestion/.zsh-auto-suggestion.zsh
 
 if [ -f "$HOME/.condainitzshrc" ]; then
 	source ~/.condainitzshrc
