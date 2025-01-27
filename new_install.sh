@@ -9,13 +9,15 @@ echo "######"
 echo "###### Install 2 \t\t: Installing pixi"
 echo "######"
 mise use --env local chezmoi
-chezmoi init quentinf00
+eval "$(~/.local/bin/mise activate bash)"
+chezmoi init quentinf00 -av
 
 
 echo "######"
 echo "###### Install 3 \t\t: install everything mise"
 echo "######"
 mise install
+eval "$(~/.local/bin/mise activate bash)"
 
 
 echo "######"
