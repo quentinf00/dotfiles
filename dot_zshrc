@@ -116,7 +116,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.oh-my-zsh/custom/plugins/zsh-auto-suggestion/zsh-auto-suggestion.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-auto-suggestion/zsh-autosuggestions.zsh
 
 if [ -f "$HOME/.condainitzshrc" ]; then
 	source ~/.condainitzshrc
