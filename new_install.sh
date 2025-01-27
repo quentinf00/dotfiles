@@ -5,7 +5,6 @@ function is_exe() {
 }
 
 
-
 echo "######"
 echo "###### Install 1 \t\t: Installing and activating mise"
 echo "######"
@@ -17,7 +16,7 @@ else
 fi
 
 echo "######"
-echo "###### Install 2 \t\t: Installing pixi"
+echo "###### Install 2 \t\t: Installing chezmoi"
 echo "######"
 
 if is_exe chezmoi; then
@@ -40,6 +39,10 @@ eval "$(~/.local/bin/mise activate bash)"
 echo "######"
 echo "###### Install 4 \t\t: install everything pixi"
 echo "######"
-pixi install
+if is_exe zsh; then
+	echo "Zsh already installed"
+else
+	pixi global install zsh
+fi
 
 

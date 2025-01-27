@@ -1,5 +1,6 @@
 [tools]
 neovim = "latest"
+make = "latest"
 fzf = "latest"
 node = "latest"
 tmux = "latest"
