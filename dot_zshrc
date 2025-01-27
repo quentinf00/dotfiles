@@ -7,7 +7,7 @@ alias vg="v -c 'G | wincmd o'"
 alias tl="fd . ~/.tmuxp  | fzf | xargs tmuxp load -y"
 export EDITOR=nvim
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.ohmyzsh"
+export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.zsh/custom"
 export FZF_BASE=$CONDA_PREFIX/share/fzf
 
