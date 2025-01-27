@@ -1,6 +1,6 @@
 !#/bin/bash
 
-
+function is_exe() {
     which "$@" &> /dev/null
 }
 
@@ -25,16 +25,15 @@ if is_exe chezmoi; then
 else:
 	mise use --env local chezmoi
 	eval "$(~/.local/bin/mise activate bash)"
-	chezmoi init quentinf00 -v
+	chezmoi init -v quentinf00 
 fi
-
-chezmoi apply
+chezmoi apply -v
 
 
 echo "######"
 echo "###### Install 3 \t\t: install everything mise"
 echo "######"
-mise install
+MISE_VERBOSE=1 mise install
 eval "$(~/.local/bin/mise activate bash)"
 
 
