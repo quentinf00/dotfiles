@@ -19,7 +19,7 @@ export FZF_BASE=$CONDA_PREFIX/share/fzf
 # ZSH_THEME="afowler"
 
 
-ZSH_THEME="powerlevel10k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 
 
