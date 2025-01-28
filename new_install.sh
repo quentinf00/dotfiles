@@ -36,9 +36,18 @@ echo "######"
 MISE_VERBOSE=1 mise install
 eval "$(~/.local/bin/mise activate bash)"
 
+echo "######"
+echo "###### Install 4 \t\t: install git"
+echo "######"
+if is_exe git; then
+	echo "Git already installed"
+else
+	pixi global install git
+fi
+
 
 echo "######"
-echo "###### Install 4 \t\t: install zsh"
+echo "###### Install 5 \t\t: install zsh"
 echo "######"
 if is_exe zsh; then
 	echo "Zsh already installed"
@@ -47,7 +56,7 @@ else
 fi
 
 echo "######"
-echo "###### Install 5 \t\t: install tmux"
+echo "###### Install 6 \t\t: install tmux"
 echo "######"
 if is_exe tmux; then
 	echo "Tmux already installed"
@@ -57,12 +66,3 @@ fi
 
 
 
-echo "######"
-echo "###### Install 5 \t\t: Installing and activating mise"
-echo "######"
-if is_exe mise; then
-	echo "Mise already installed"
-else
-	curl https://mise.run | sh
-	eval "$(~/.local/bin/mise activate bash)"
-fi
