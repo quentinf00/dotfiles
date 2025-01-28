@@ -15,6 +15,7 @@ else
 	eval "$(~/.local/bin/mise activate bash)"
 fi
 
+
 echo "######"
 echo "###### Install 2 \t\t: Installing chezmoi"
 echo "######"
@@ -37,12 +38,21 @@ eval "$(~/.local/bin/mise activate bash)"
 
 
 echo "######"
-echo "###### Install 4 \t\t: install everything pixi"
+echo "###### Install 4 \t\t: install zsh"
 echo "######"
 if is_exe zsh; then
 	echo "Zsh already installed"
 else
 	pixi global install zsh
+fi
+
+echo "######"
+echo "###### Install 5 \t\t: install tmux"
+echo "######"
+if is_exe tmux; then
+	echo "Tmux already installed"
+else
+	pixi global install tmux
 fi
 
 

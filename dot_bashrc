@@ -1,5 +1,6 @@
 #!/bin/bash
 eval "$(~/.local/bin/mise activate bash)"
+export PATH="$HOME/.pixi/bin:$PATH"
 
 alias t='$(which zsh) tmux new -As home'
 
