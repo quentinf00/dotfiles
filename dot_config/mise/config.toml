@@ -1,7 +1,6 @@
 [tools]
 neovim = "latest"
 python = "latest"
-clang = "latest"
 fzf = "latest"
 node = "latest"
 bat = "latest"
