@@ -1,8 +1,9 @@
 #!/bin/bash
 eval "$(~/.local/bin/mise activate bash)"
 export PATH="$HOME/.pixi/bin:$PATH"
+export EDITOR=nvim
 
-alias t='$(which zsh) tmux new -As home'
+alias t='SHELL=$(which zsh) tmux new -As home'
 
 if [  "`which tmux`" ] && [ "`which zsh`" ]  && [ "$TMUX" == "" ]; then
 	t
