@@ -16,6 +16,10 @@ pcall(require("telescope").load_extension, "smart_history")
 
 local builtin = require "telescope.builtin"
 
+vim.keymap.set("n", "<leader>tt", builtin.treesitter)
+vim.keymap.set("n", "<leader>tf", function()
+  builtin.treesitter { default_text = "function" }
+end)
 vim.keymap.set("n", "<leader>fd", builtin.find_files)
 vim.keymap.set("n", "<leader>fh", builtin.help_tags)
 vim.keymap.set("n", "<leader>fg", builtin.live_grep)
