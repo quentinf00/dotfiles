@@ -1,5 +1,4 @@
 #!/bin/bash
-eval "$(~/.local/bin/mise activate bash)"
 export PATH="$HOME/.pixi/bin:$PATH"
 export EDITOR=nvim
 

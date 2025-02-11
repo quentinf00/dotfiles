@@ -8,7 +8,6 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-eval "$(~/.local/bin/mise activate zsh)"
 alias v=nvim
 alias vg="v -c 'G | wincmd o'"
 alias tl="fd . ~/.tmuxp  | fzf | xargs tmuxp load -y"
