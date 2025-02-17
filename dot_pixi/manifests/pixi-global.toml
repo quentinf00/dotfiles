@@ -20,25 +20,6 @@ channels = ["conda-forge"]
 dependencies = { ncview = "*" }
 exposed = { ncview = "ncview", ncdump = "ncdump" }
 
-[envs.netcdf4]
-channels = ["conda-forge"]
-dependencies = { netcdf4 = "*" }
-exposed = { nc3tonc4 = "nc3tonc4", nc4tonc3 = "nc4tonc3", ncinfo = "ncinfo" }
-
-[envs.nco]
-channels = ["conda-forge"]
-dependencies = { nco = "*" }
-exposed = { ncap2 = "ncap2", ncatted = "ncatted", ncbo = "ncbo", ncchecker = "ncchecker", ncclimo = "ncclimo", ncdiff = "ncdiff", ncea = "ncea", ncecat = "ncecat", nces = "nces", ncflint = "ncflint", ncks = "ncks", ncpdq = "ncpdq", ncra = "ncra", ncrcat = "ncrcat", ncremap = "ncremap", ncrename = "ncrename", ncwa = "ncwa", ncz2psx = "ncz2psx" }
-
-[envs.ncl]
-channels = ["conda-forge"]
-dependencies = { ncl = "*" }
-exposed = { ConvertMapData = "ConvertMapData", MakeNcl = "MakeNcl", WRAPIT = "WRAPIT", WriteLineFile = "WriteLineFile", WriteNameFile = "WriteNameFile", WritePlotcharData = "WritePlotcharData", cgm2ncgm = "cgm2ncgm", ctlib = "ctlib", ctrans = "ctrans", ezmapdemo = "ezmapdemo", fcaps = "fcaps", findg = "findg", fontc = "fontc", gcaps = "gcaps", graphc = "graphc", ictrans = "ictrans", idt = "idt", med = "med", ncargcc = "ncargcc", ncargex = "ncargex", ncargf77 = "ncargf77", ncargf90 = "ncargf90", ncargfile = "ncargfile", ncargpath = "ncargpath", ncargrun = "ncargrun", ncargversion = "ncargversion", ncargworld = "ncargworld", ncarlogo2ps = "ncarlogo2ps", ncarvversion = "ncarvversion", ncgm2cgm = "ncgm2cgm", ncgmstat = "ncgmstat", ncl = "ncl", ncl_convert2nc = "ncl_convert2nc", ncl_filedump = "ncl_filedump", ncl_grib2nc = "ncl_grib2nc", ncl_quicklook = "ncl_quicklook", ng4ex = "ng4ex", nhlcc = "nhlcc", nhlf77 = "nhlf77", nhlf90 = "nhlf90", nnalg = "nnalg", pre2ncgm = "pre2ncgm", "pre2ncgm.prog" = "pre2ncgm.prog", psblack = "psblack", psplit = "psplit", pswhite = "pswhite", pwritxnt = "pwritxnt", ras2ccir601 = "ras2ccir601", rascat = "rascat", rasgetpal = "rasgetpal", rasls = "rasls", rassplit = "rassplit", rasstat = "rasstat", rasview = "rasview", scrip_check_input = "scrip_check_input", tdpackdemo = "tdpackdemo", tgks0a = "tgks0a", tlocal = "tlocal", wrapit77 = "wrapit77" }
-
-[envs.cdo]
-channels = ["conda-forge"]
-dependencies = { cdo = "*" }
-exposed = { cdo = "cdo" }
 
 [envs.tree]
 channels = ["conda-forge"]
@@ -75,10 +56,6 @@ channels = ["conda-forge"]
 dependencies = { cookiecutter = "*" }
 exposed = { cookiecutter = "cookiecutter" }
 
-[envs.fn]
-channels = ["conda-forge"]
-dependencies = { fn = "*" }
-
 [envs.fzf]
 channels = ["conda-forge"]
 dependencies = { fzf = "*" }
@@ -113,11 +90,6 @@ exposed = { lazygit = "lazygit" }
 channels = ["conda-forge"]
 dependencies = { nodejs = "*" }
 exposed = { corepack = "corepack", node = "node", npm = "npm", npx = "npx" }
-
-[envs.ollama]
-channels = ["conda-forge"]
-dependencies = { ollama = "*" }
-exposed = { ollama = "ollama" }
 
 [envs.pipx]
 channels = ["conda-forge"]
