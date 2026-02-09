@@ -1,0 +1,12 @@
+[[plugin.deps]]
+use = "wylie102/duckdb"
+rev = "3f8c863"
+hash = "87b9233a74325e95011670ed20bbd0d4"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "57f1863"
+hash = "954922c883778c19c4a2dad5be08787f"
+
+[flavor]
+deps = []

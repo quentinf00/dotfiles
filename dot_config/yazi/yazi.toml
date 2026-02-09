@@ -1,0 +1,58 @@
+[preview]
+max_width       = 1200
+max_height      = 1800
+
+[mgr]
+ratio = [1, 1, 2]
+
+[plugin]
+[[plugin.prepend_previewers]]
+url = "*.pt"
+run = 'pytorch'
+
+[[plugin.prepend_previewers]]
+url = "*.ckpt"
+run = 'pytorch'
+
+[[plugin.prepend_previewers]]
+url = "*.nc"
+run = 'nc-preview'
+
+[[plugin.prepend_previewers]]
+url = "*.zarr"
+run = 'nc-preview'
+
+[[plugin.prepend_previewers]]
+url = "*.csv"
+run = 'duckdb'
+
+[[plugin.prepend_previewers]]
+url = "*.tsv"
+run = 'duckdb'
+
+[[plugin.prepend_previewers]]
+url = "*.json"
+run = 'duckdb'
+
+[[plugin.prepend_previewers]]
+url = "*.parquet"
+run = 'duckdb'
+
+[[plugin.prepend_previewers]]
+url = "*.jsonl"
+run = 'duckdb'
+
+[[plugin.prepend_previewers]]
+url = "*/"
+run = 'piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"'
+
+[[plugin.prepend_previewers]]
+url = "*.ipynb"
+run  = 'piper -- nbp --no-paging --nerd-font --decorated --no-files --unicode --color --images --color-system=standard --theme=ansi_dark "$1"'
+
+# prepend_preloaders = [  
+#   { url = "*.csv", run = "duckdb", multi = false },  
+#   { url = "*.tsv", run = "duckdb", multi = false },  
+#   { url = "*.json", run = "duckdb", multi = false },  
+#   { url = "*.parquet", run = "duckdb", multi = false },
+# ]
