@@ -7,8 +7,8 @@ exposed = { zsh = "zsh", "zsh-5.9" = "zsh-5.9" }
 
 [envs.jupyterlab]
 channels = ["conda-forge"]
-dependencies = { jupyterlab = "*" , jupyter_console = "*", ipywidgets = "*", watchfiles = "*", jupyter_events = "*" , jupyter = "*" , jupytext = "*" }
-exposed = { jupyter-lab = "jupyter-lab", jupyter-labextension = "jupyter-labextension", jupyter-labhub = "jupyter-labhub", jlpm = "jlpm", jupyter-console = "jupyter-console", watchfiles = "watchfiles", jupyter-events = "jupyter-events", jupyter = "jupyter", jupytext = "jupytext", jupytext-config = "jupytext-config" }
+dependencies = { jupyterlab = "*" , jupyter_console = "*", ipywidgets = "*", watchfiles = "*", jupyter_events = "*" , jupyter = "*" , jupytext = "*" , pynvim = "*", pillow = "*", cairosvg = "*" }
+exposed = { jupyter-lab = "jupyter-lab", jupyter-labextension = "jupyter-labextension", jupyter-labhub = "jupyter-labhub", jlpm = "jlpm", jupyter-console = "jupyter-console", watchfiles = "watchfiles", jupyter-events = "jupyter-events", jupyter = "jupyter", jupytext = "jupytext", jupytext-config = "jupytext-config", pynvim-python = "pynvim-python", cairosvg = "cairosvg" }
 
 [envs.dvc]
 channels = ["conda-forge"]
@@ -26,11 +26,6 @@ channels = ["conda-forge"]
 dependencies = { tree = "*" }
 exposed = { tree = "tree" }
 
-[envs.tmux]
-channels = ["conda-forge"]
-dependencies = { tmux = "*" }
-exposed = { tmux = "tmux" }
-
 [envs.nvim]
 channels = ["conda-forge"]
 dependencies = { nvim = "*" }
@@ -39,7 +34,7 @@ exposed = { nvim = "nvim" }
 [envs.awscli]
 channels = ["conda-forge"]
 dependencies = { awscli = "*" }
-exposed = { aws = "aws", "aws.cmd" = "aws.cmd", aws_bash_completer = "aws_bash_completer", aws_completer = "aws_completer", aws_zsh_completer = "aws_zsh_completer" }
+exposed = { aws = "aws", aws_completer = "aws_completer" }
 
 [envs.bat]
 channels = ["conda-forge"]
@@ -50,11 +45,6 @@ exposed = { bat = "bat" }
 channels = ["conda-forge"]
 dependencies = { chezmoi = "*" }
 exposed = { chezmoi = "chezmoi" }
-
-[envs.cookiecutter]
-channels = ["conda-forge"]
-dependencies = { cookiecutter = "*" }
-exposed = { cookiecutter = "cookiecutter" }
 
 [envs.fzf]
 channels = ["conda-forge"]
@@ -89,7 +79,7 @@ exposed = { lazygit = "lazygit" }
 [envs.nodejs]
 channels = ["conda-forge"]
 dependencies = { nodejs = "*" }
-exposed = { corepack = "corepack", node = "node", npm = "npm", npx = "npx" }
+exposed = { node = "node", npm = "npm", npx = "npx" }
 
 [envs.pipx]
 channels = ["conda-forge"]
@@ -120,4 +110,88 @@ exposed = { tomlq = "tomlq", yq = "yq", xq = "xq" }
 channels = ["conda-forge"]
 dependencies = { fd-find = "*" }
 exposed = { fd = "fd" }
+
+[envs.btop]
+channels = ["conda-forge"]
+dependencies = { btop = "*" }
+exposed = { btop = "btop" }
+
+[envs.anaconda-client]
+channels = ["conda-forge"]
+dependencies = { anaconda-client = "*" }
+exposed = { anaconda = "anaconda" }
+
+[envs.conda-build]
+channels = ["conda-forge"]
+dependencies = { conda-build = "*" }
+exposed = { conda-build = "conda-build", conda-convert = "conda-convert", conda-debug = "conda-debug", conda-develop = "conda-develop", conda-inspect = "conda-inspect", conda-metapackage = "conda-metapackage", conda-render = "conda-render", conda-skeleton = "conda-skeleton" }
+
+[envs.selenium]
+channels = ["conda-forge"]
+dependencies = { selenium = "*" }
+
+[envs.firefox]
+channels = ["conda-forge"]
+dependencies = { firefox = "*" , gtk3 = "*" }
+exposed = { firefox = "firefox", ".gtk3-post-link" = ".gtk3-post-link", gtk-builder-tool = "gtk-builder-tool", gtk-encode-symbolic-svg = "gtk-encode-symbolic-svg", gtk-launch = "gtk-launch", "gtk-query-immodules-3.0" = "gtk-query-immodules-3.0", gtk-query-settings = "gtk-query-settings", gtk-update-icon-cache = "gtk-update-icon-cache" }
+
+[envs.geckodriver]
+channels = ["conda-forge"]
+dependencies = { geckodriver = "*" }
+exposed = { geckodriver = "geckodriver" }
+
+[envs.zip]
+channels = ["conda-forge"]
+dependencies = { zip = "*" }
+exposed = { zip = "zip", zipcloak = "zipcloak", zipnote = "zipnote", zipsplit = "zipsplit" }
+
+[envs.podman]
+channels = ["conda-forge"]
+dependencies = { podman = "*" }
+exposed = { podman = "podman", podman-remote = "podman-remote", podmansh = "podmansh" }
+
+[envs.miller]
+channels = ["conda-forge"]
+dependencies = { miller = "*" }
+exposed = { mlr = "mlr" }
+
+[envs.singularity]
+channels = ["conda-forge"]
+dependencies = { singularity = "*" }
+exposed = { run-singularity = "run-singularity", singularity = "singularity" }
+
+[envs.cookiecutter]
+channels = ["conda-forge"]
+dependencies = { cookiecutter = "*" }
+exposed = { cookiecutter = "cookiecutter" }
+
+[envs.yazi]
+channels = ["conda-forge"]
+dependencies = { yazi = "*", chafa = "*", python = "3.11.*", xarray = "*", zarr = "*", h5netcdf = "*" , dask = "*" , netcdf4 = "*" , pytorch-cpu = "*", lovely-tensors = "*" }
+exposed = { yazi = "yazi", ya = "ya", chafa = "chafa"}
+
+[envs.git]
+channels = ["conda-forge"]
+dependencies = { git = "*" }
+exposed = { git = "git", git-cvsserver = "git-cvsserver", git-receive-pack = "git-receive-pack", git-shell = "git-shell", git-upload-archive = "git-upload-archive", git-upload-pack = "git-upload-pack", gitk = "gitk", scalar = "scalar" }
+
+[envs.zoxide]
+channels = ["conda-forge"]
+dependencies = { zoxide = "*" }
+exposed = { zoxide = "zoxide" }
+
+[envs.eza]
+channels = ["conda-forge"]
+dependencies = { eza = "*" }
+exposed = { eza = "eza" }
+
+[envs.duckdb-cli]
+channels = ["conda-forge"]
+dependencies = { duckdb-cli = "*" }
+exposed = { duckdb = "duckdb" }
+
+[envs.nbpreview]
+channels = ["conda-forge"]
+dependencies = { nbpreview = "*" }
+exposed = { nbp = "nbp", nbpreview = "nbpreview" }
 
