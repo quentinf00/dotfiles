@@ -7,8 +7,8 @@ exposed = { zsh = "zsh", "zsh-5.9" = "zsh-5.9" }
 
 [envs.jupyterlab]
 channels = ["conda-forge"]
-dependencies = { jupyterlab = "*" , jupyter_console = "*", ipywidgets = "*", watchfiles = "*", jupyter_events = "*" , jupyter = "*" , jupytext = "*" , pynvim = "*", pillow = "*", cairosvg = "*" }
-exposed = { jupyter-lab = "jupyter-lab", jupyter-labextension = "jupyter-labextension", jupyter-labhub = "jupyter-labhub", jlpm = "jlpm", jupyter-console = "jupyter-console", watchfiles = "watchfiles", jupyter-events = "jupyter-events", jupyter = "jupyter", jupytext = "jupytext", jupytext-config = "jupytext-config", pynvim-python = "pynvim-python", cairosvg = "cairosvg" }
+dependencies = { jupyterlab = "*" , jupyter_console = "*", ipywidgets = "*", watchfiles = "*", jupyter_events = "*" , jupyter = "*" , jupytext = "*" , pynvim = "*", pillow = "*", cairosvg = "*" , euporie = "*" , timg = "*" }
+exposed = { jupyter-lab = "jupyter-lab", jupyter-labextension = "jupyter-labextension", jupyter-labhub = "jupyter-labhub", jlpm = "jlpm", jupyter-console = "jupyter-console", watchfiles = "watchfiles", jupyter-events = "jupyter-events", jupyter = "jupyter", jupytext = "jupytext", jupytext-config = "jupytext-config", pynvim-python = "pynvim-python", cairosvg = "cairosvg", euporie = "euporie", euporie-console = "euporie-console", euporie-notebook = "euporie-notebook", euporie-preview = "euporie-preview", euporie-hub = "euporie-hub" }
 
 [envs.dvc]
 channels = ["conda-forge"]
