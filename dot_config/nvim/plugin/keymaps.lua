@@ -9,7 +9,7 @@ set("n", "<CR>", function()
   else
     return "<CR>"
   end
-end, { expr = true })
+end, { expr = true, desc = "Clear hlsearch or enter" })
 
 set("n", "<M-j>", function()
   if vim.opt.diff:get() then
@@ -17,7 +17,7 @@ set("n", "<M-j>", function()
   else
     vim.cmd [[m .+1<CR>==]]
   end
-end)
+end, { desc = "Move line down / next diff hunk" })
 
 set("n", "<M-k>", function()
   if vim.opt.diff:get() then
@@ -25,4 +25,4 @@ set("n", "<M-k>", function()
   else
     vim.cmd [[m .-2<CR>==]]
   end
-end)
+end, { desc = "Move line up / prev diff hunk" })

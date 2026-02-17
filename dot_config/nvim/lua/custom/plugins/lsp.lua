@@ -2,7 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "folke/neodev.nvim",
+      { "folke/lazydev.nvim", ft = "lua", opts = {} },
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -16,19 +16,10 @@ return {
       "b0o/SchemaStore.nvim",
     },
     config = function()
-      require("neodev").setup {
-        -- library = {
-        --   plugins = { "nvim-dap-ui" },
-        --   types = true,
-        -- },
-      }
-
       local capabilities = nil
       if pcall(require, "cmp_nvim_lsp") then
         capabilities = require("cmp_nvim_lsp").default_capabilities()
       end
-
-      local lspconfig = require "lspconfig"
 
       local servers = {
         bashls = true,
@@ -70,7 +61,7 @@ return {
         "stylua",
         "lua_ls",
         "pyright",
-        "ruff-lsp",
+        "ruff",
         -- "tailwind-language-server",
       }
 
@@ -85,8 +76,9 @@ return {
           capabilities = capabilities,
         }, config)
 
-        lspconfig[name].setup(config)
+        vim.lsp.config(name, config)
       end
+      vim.lsp.enable(vim.tbl_keys(servers))
 
       local disable_semantic_tokens = {
         lua = true,
@@ -95,17 +87,11 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
           local bufnr = args.buf
-          local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
+          local client = assert(vim.lsp.get_clients({ id = args.data.client_id })[1], "must have valid client")
 
-          vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
-          vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
-
-          vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, { buffer = 0 })
-          vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, { buffer = 0 })
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: Go to definition" })
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "LSP: Go to declaration" })
+          vim.keymap.set("n", "grt", vim.lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Go to type definition" })
 
           local filetype = vim.bo[bufnr].filetype
           if disable_semantic_tokens[filetype] then
@@ -125,7 +111,7 @@ return {
         callback = function(args)
           require("conform").format {
             bufnr = args.buf,
-            lsp_fallback = true,
+            lsp_format = "fallback",
             quiet = true,
           }
         end,
