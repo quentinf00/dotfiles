@@ -1,9 +1,13 @@
 #!/bin/bash
-export PATH="$HOME/.pixi/bin:$PATH"
+export HDF5_USE_FILE_LOCKING=FALSE
+export PATH="$HOME/bin:$HOME/.pixi/bin:$PATH"
+export PATH=$PATH:$HOME/.pixi/envs/nodejs/bin
 export EDITOR=nvim
 
 alias t='SHELL=$(which zsh) tmux new -As home'
 
-if [  "`which tmux`" ] && [ "`which zsh`" ]  && [ "$TMUX" == "" ]; then
+if [ "$(which tmux)" ] && [ "$(which zsh)" ] && [ "$TMUX" == "" ]; then
 	t
 fi
+
+. "$HOME/.local/bin/env"

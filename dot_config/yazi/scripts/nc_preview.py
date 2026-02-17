@@ -2,6 +2,7 @@
 import sys
 import xarray as xr
 import os
+xr.set_options(display_max_rows=50)
 
 path = sys.argv[1]
 
