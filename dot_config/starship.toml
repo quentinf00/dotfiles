@@ -1,0 +1,43 @@
+format = """$hostname $directory\
+$git_branch\
+$conda
+$custom\
+$character"""
+
+right_format ="$cmd_duration"
+
+
+[env_var.PIXI_PROJECT_NAME]
+variable = "PIXI_PROJECT_NAME"
+format = "[$env_value]($style) "
+style = "bold red"
+
+[custom.pixi]
+command = 'echo "$PIXI_PROJECT_NAME/$PIXI_ENVIRONMENT_NAME"'
+when = 'test -n "$PIXI_PROJECT_NAME"'
+format = "[🧪 $output]($style) "
+style = "purple"
+
+[pixi]
+disabled = true
+
+[directory]
+fish_style_pwd_dir_length = 1
+truncation_length = 2
+
+[git_branch]
+format = '[$symbol$branch]($style) '
+
+[conda]
+format = '[$symbol$environment]($style) '
+
+[python]
+format = '[${symbol}${version}]($style) '
+
+[character]
+success_symbol = '[>>>](bold green)'
+error_symbol = '[xx>](bold red)'
+
+[cmd_duration]
+min_time = 5000
+format = 'took [$duration](bold yellow)'
