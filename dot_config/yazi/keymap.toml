@@ -28,3 +28,15 @@ desc = "Maximize preview"
 on = ["g", "m"]
 run = "layout 1 1 3"
 desc = "Restore layout"
+
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "r" ]
+run  = "plugin copy-rel"
+desc = "Copy relative path(s)"
+
+[[mgr.prepend_keymap]]
+on   = [ "E" ]
+run  = "plugin euporie"
+desc = "Open interactive console"
+

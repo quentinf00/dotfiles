@@ -9,21 +9,31 @@ setopt share_history
 
 # Options
 setopt glob_dots
-setopt no_auto_menu
+setopt auto_menu
+setopt menu_complete
 setopt interactive_comments
+
+# Home / End keys
+[[ -n "${terminfo[khome]}" ]] && bindkey "${terminfo[khome]}" beginning-of-line
+[[ -n "${terminfo[kend]}" ]] && bindkey "${terminfo[kend]}" end-of-line
+# Ctrl + Arrow keys → move by words
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+# Proper bracketed paste (fixes [27;5;106~ and similar garbage on paste)
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
 
 # Completions
 autoload -Uz compinit
-compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+compinit -d ~/.zcompdump-$HOST
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select
 
 # Environment
 export EDITOR=nvim
 export DO_NOT_TRACK=true
 export HDF5_USE_FILE_LOCKING=FALSE
-export PATH="$HOME/bin:$HOME/.pixi/bin:$PATH"
-export PATH="$PATH:$HOME/.pixi/envs/nodejs/bin"
+export PATH="$HOME/.local/bin:$HOME/bin:$HOME/.pixi/bin:$HOME/.pixi/envs/nodejs/bin:$PATH"
 
 # Plugins
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -54,3 +64,6 @@ function y() {
 # Tools (starship must be last)
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+
+# Host-specific overrides
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

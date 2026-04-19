@@ -1,10 +1,5 @@
 version = 1
 
-[envs.zsh]
-channels = ["conda-forge"]
-dependencies = { zsh = "*" }
-exposed = { zsh = "zsh", "zsh-5.9" = "zsh-5.9" }
-
 [envs.jupyterlab]
 channels = ["conda-forge"]
 dependencies = { jupyterlab = "*" , jupyter_console = "*", ipywidgets = "*", watchfiles = "*", jupyter_events = "*" , jupyter = "*" , jupytext = "*" , pynvim = "*", pillow = "*", cairosvg = "*" , euporie = "*" , timg = "*" }
@@ -25,11 +20,6 @@ exposed = { ncview = "ncview", ncdump = "ncdump" }
 channels = ["conda-forge"]
 dependencies = { tree = "*" }
 exposed = { tree = "tree" }
-
-[envs.nvim]
-channels = ["conda-forge"]
-dependencies = { nvim = "*" }
-exposed = { nvim = "nvim" }
 
 [envs.awscli]
 channels = ["conda-forge"]
@@ -170,11 +160,6 @@ channels = ["conda-forge"]
 dependencies = { yazi = "*", chafa = "*", python = "3.11.*", xarray = "*", zarr = "*", h5netcdf = "*" , dask = "*" , netcdf4 = "*" , pytorch-cpu = "*", lovely-tensors = "*" }
 exposed = { yazi = "yazi", ya = "ya", chafa = "chafa"}
 
-[envs.git]
-channels = ["conda-forge"]
-dependencies = { git = "*" }
-exposed = { git = "git", git-cvsserver = "git-cvsserver", git-receive-pack = "git-receive-pack", git-shell = "git-shell", git-upload-archive = "git-upload-archive", git-upload-pack = "git-upload-pack", gitk = "gitk", scalar = "scalar" }
-
 [envs.zoxide]
 channels = ["conda-forge"]
 dependencies = { zoxide = "*" }
@@ -204,4 +189,24 @@ exposed = { starship = "starship" }
 channels = ["conda-forge"]
 dependencies = { fish = "*" }
 exposed = { fish = "fish", fish_indent = "fish_indent", fish_key_reader = "fish_key_reader" }
+
+[envs.nvim]
+channels = ["conda-forge"]
+dependencies = { nvim = "*", tree-sitter-cli = "*" }
+exposed = { nvim = "nvim", tree-sitter = "tree-sitter" }
+
+[envs.git]
+channels = ["conda-forge"]
+dependencies = { git = "*" }
+exposed = { git = "git", git-cvsserver = "git-cvsserver", git-receive-pack = "git-receive-pack", git-shell = "git-shell", git-upload-archive = "git-upload-archive", git-upload-pack = "git-upload-pack", gitk = "gitk", scalar = "scalar" }
+
+[envs.zsh]
+channels = ["conda-forge"]
+dependencies = { zsh = "*" }
+exposed = { zsh = "zsh", "zsh-5.9" = "zsh-5.9" }
+
+[envs.7zip]
+channels = ["conda-forge"]
+dependencies = { 7zip = "*" }
+exposed = { 7z = "7z", 7za = "7za", 7zr = "7zr", 7zz = "7zz" }
 
