@@ -1,11 +1,17 @@
 format = """$hostname $directory\
 $git_branch\
 $conda
+${env_var.CUDA_VISIBLE_DEVICES}\
 $custom\
 $character"""
 
 right_format ="$cmd_duration"
 
+
+[env_var.CUDA_VISIBLE_DEVICES]
+variable = "CUDA_VISIBLE_DEVICES"
+format = "[  $env_value]($style) "
+style = "bold green"
 
 [env_var.PIXI_PROJECT_NAME]
 variable = "PIXI_PROJECT_NAME"
