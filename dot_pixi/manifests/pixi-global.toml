@@ -200,11 +200,6 @@ channels = ["conda-forge"]
 dependencies = { git = "*" }
 exposed = { git = "git", git-cvsserver = "git-cvsserver", git-receive-pack = "git-receive-pack", git-shell = "git-shell", git-upload-archive = "git-upload-archive", git-upload-pack = "git-upload-pack", gitk = "gitk", scalar = "scalar" }
 
-[envs.zsh]
-channels = ["conda-forge"]
-dependencies = { zsh = "*" }
-exposed = { zsh = "zsh", "zsh-5.9" = "zsh-5.9" }
-
 [envs.7zip]
 channels = ["conda-forge"]
 dependencies = { 7zip = "*" }
