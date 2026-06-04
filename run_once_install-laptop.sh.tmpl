@@ -1,0 +1,37 @@
+#!/bin/bash
+{{ if not (default false .isLaptop) -}}
+echo "Not a laptop/workstation — skipping laptop setup."
+exit 0
+{{ end -}}
+set -e
+
+# --- Ghostty ---
+if ! command -v ghostty &>/dev/null && ! flatpak list 2>/dev/null | grep -q com.mitchellh.ghostty; then
+  echo "Installing Ghostty..."
+  if command -v flatpak &>/dev/null; then
+    flatpak install -y flathub com.mitchellh.ghostty
+  else
+    echo "Please install Ghostty manually: https://ghostty.org/docs/install"
+  fi
+else
+  echo "Ghostty already installed, skipping."
+fi
+
+# --- Brave browser (required for web app utils) ---
+if ! command -v brave-browser &>/dev/null && ! command -v brave &>/dev/null; then
+  echo "Installing Brave browser..."
+  if command -v apt-get &>/dev/null; then
+    curl -fsS https://dl.brave.com/install.sh | sh
+  else
+    echo "Please install Brave manually: https://brave.com/linux/"
+  fi
+else
+  echo "Brave already installed, skipping."
+fi
+
+# --- Refresh desktop entries ---
+if command -v update-desktop-database &>/dev/null; then
+  update-desktop-database "$HOME/.local/share/applications"
+fi
+
+echo "Laptop setup complete."

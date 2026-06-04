@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Mattermost
+Comment=Mattermost
+Exec={{ .chezmoi.homeDir }}/bin/launch-webapp https://gitlabchat.ifremer.fr mattermost
+Terminal=false
+Type=Application
+Icon={{ .chezmoi.homeDir }}/.local/share/applications/icons/Mattermost.png
+StartupNotify=true
+StartupWMClass=gitlabchat.ifremer.fr
+Categories=Network;WebBrowser;

@@ -1,0 +1,22 @@
+#!/bin/bash
+{{ if default false .isLaptop -}}
+echo "Not a server — skipping server setup."
+exit 0
+{{ end -}}
+set -e
+
+# --- zsh plugins (no GUI assumed) ---
+PLUGINS_DIR="$HOME/.zsh/plugins"
+mkdir -p "$PLUGINS_DIR"
+
+if [ ! -d "$PLUGINS_DIR/zsh-autosuggestions" ]; then
+  echo "Installing zsh-autosuggestions..."
+  git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$PLUGINS_DIR/zsh-autosuggestions"
+fi
+
+if [ ! -d "$PLUGINS_DIR/zsh-syntax-highlighting" ]; then
+  echo "Installing zsh-syntax-highlighting..."
+  git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting "$PLUGINS_DIR/zsh-syntax-highlighting"
+fi
+
+echo "Server setup complete."

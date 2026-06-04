@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Webmail
+Comment=Webmail
+Exec={{ .chezmoi.homeDir }}/bin/launch-webapp https://webmail.ifremer.fr webmail
+Terminal=false
+Type=Application
+Icon={{ .chezmoi.homeDir }}/.local/share/applications/icons/Webmail.png
+StartupNotify=true
+StartupWMClass=webmail.ifremer.fr
+Categories=Network;WebBrowser;

@@ -35,6 +35,13 @@ export DO_NOT_TRACK=true
 export HDF5_USE_FILE_LOCKING=FALSE
 export PATH="$HOME/.local/bin:$HOME/bin:$HOME/.pixi/bin:$HOME/.pixi/envs/nodejs/bin:$PATH"
 
+# History navigation: up/down arrow searches by typed prefix
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+[[ -n "${terminfo[kcuu1]}" ]] && bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+[[ -n "${terminfo[kcud1]}" ]] && bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+
 # Plugins
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
