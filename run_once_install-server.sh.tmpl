@@ -1,5 +1,5 @@
 #!/bin/bash
-{{ if default false .isLaptop -}}
+{{ if get . "isLaptop" -}}
 echo "Not a server — skipping server setup."
 exit 0
 {{ end -}}

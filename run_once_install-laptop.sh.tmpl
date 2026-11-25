@@ -1,12 +1,14 @@
 #!/bin/bash
-{{ if not (default false .isLaptop) -}}
+{{ if not (get . "isLaptop") -}}
 echo "Not a laptop/workstation — skipping laptop setup."
 exit 0
 {{ end -}}
 set -e
 
-# --- Ghostty ---
-if ! command -v ghostty &>/dev/null && ! flatpak list 2>/dev/null | grep -q com.mitchellh.ghostty; then
+# The bootstrap script installs Ghostty through the laptop Pixi manifest.
+if command -v pixi &>/dev/null; then
+  echo "Ghostty is managed by Pixi."
+elif ! command -v ghostty &>/dev/null && ! flatpak list 2>/dev/null | grep -q com.mitchellh.ghostty; then
   echo "Installing Ghostty..."
   if command -v flatpak &>/dev/null; then
     flatpak install -y flathub com.mitchellh.ghostty

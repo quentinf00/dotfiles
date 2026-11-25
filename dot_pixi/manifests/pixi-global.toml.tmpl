@@ -280,7 +280,9 @@ channels = ["conda-forge"]
 dependencies = { pandoc = "*" }
 exposed = { pandoc = "pandoc", pandoc-lua = "pandoc-lua", pandoc-server = "pandoc-server" }
 
+{{ if get . "isLaptop" -}}
 [envs.ghostty]
 channels = ["conda-forge"]
 dependencies = { ghostty = "*" }
 exposed = { ghostty = "ghostty" }
+{{ end -}}
