@@ -7,9 +7,7 @@ vim.g.mapleader = " "
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-print(lazypath)
 if not vim.uv.fs_stat(lazypath) then
-  print("cloning")
   vim.fn.system {
     "git",
     "clone",

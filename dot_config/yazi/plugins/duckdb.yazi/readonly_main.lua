@@ -54,7 +54,7 @@ local function add_queries_to_table(target_table, queries)
 end
 
 local function generate_data_source_string(target, file_type)
-	local url_string = "'" .. tostring(target) .. "'"
+	local url_string = "'" .. tostring(target.path or target):gsub("'", "''") .. "'"
 	if file_type == "excel" then
 		return string.format("st_read(%s)", url_string)
 	elseif file_type == "text" then
@@ -93,7 +93,7 @@ local function check_file_type(path)
 end
 
 local get_hovered_url_string = ya.sync(function()
-	return tostring(cx.active.current.hovered.url)
+	return tostring(cx.active.current.hovered.url.path)
 end)
 
 local duckdb_opener = ya.sync(function(_, arg)
@@ -137,7 +137,7 @@ function M:entry(job)
 	scrolled_columns = math.max(0, scrolled_columns + scroll_delta)
 	set_opts("scrolled_columns", scrolled_columns)
 
-	ya.emit("seek", { "lateral scroll" })
+	ya.emit("seek", { 0 })
 end
 
 -- Setup from init.lua: require("duckdb"):setup({ mode = "standard"/"summarized" })
@@ -567,7 +567,7 @@ local function generate_peek_query(target, job, limit, offset, file_type, cache_
 end
 
 local function render_output(output, job)
-	local cleaned = output.stdout and output.stdout:gsub("\r", "") or "[no output]"
+	local cleaned = output and output.stdout and output.stdout:gsub("\r", "") or "[no output]"
 	ya.preview_widget(job, {
 		ui.Text.parse(cleaned):area(job.area),
 	})
@@ -672,8 +672,8 @@ local function create_cache(job, mode, file_type, limit)
 	local base_query = generate_preload_query(job, mode, file_type, limit)
 	local query = string.format("COPY (%s) TO '%s' (FORMAT 'parquet');", base_query, target)
 	local output = run_query(job, query, nil, file_type)
-	ya.dbg("stdout: " .. tostring(output.stdout))
-	ya.dbg("stderr: " .. tostring(output.stderr))
+	ya.dbg("stdout: " .. tostring(output and output.stdout))
+	ya.dbg("stderr: " .. tostring(output and output.stderr))
 
 	if not output or (output.stderr and output.stderr ~= "") then
 		ya.err(
@@ -713,7 +713,7 @@ local function is_plain_text(job, file_type)
 	local query = {
 		".mode csv",
 		".headers off",
-		string.format("select count(column_name) from (describe from read_csv('%s'));", tostring(job.file.url)),
+		string.format("select count(column_name) from (describe from read_csv('%s'));", tostring(job.file.url.path):gsub("'", "''")),
 	}
 	local output = run_query(job, query, nil, file_type)
 	local result = (output and output.stdout == "1\r\n")
@@ -758,8 +758,8 @@ function M:peek(job)
 	local query = generate_peek_query(args.target, job, args.limit, args.offset, args.file_type, args.cache_str)
 	ya.dbg("query: " .. tostring(query))
 	local output = run_query(job, query, args.target, args.file_type)
-	ya.dbg("stdout: " .. tostring(output.stdout))
-	ya.dbg("stderr: " .. tostring(output.stderr))
+	ya.dbg("stdout: " .. tostring(output and output.stdout))
+	ya.dbg("stderr: " .. tostring(output and output.stderr))
 	if not output_is_valid(output, args.mode, job) then
 		if args.target == args.cache_url and args.scrolled_collumns == 0 then
 			add_to_list("bad_cache", args.cache_str)

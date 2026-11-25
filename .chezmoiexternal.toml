@@ -10,3 +10,9 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+[".config/tmux/plugins/catppuccin/tmux"]
+    type = "archive"
+    url = "https://github.com/catppuccin/tmux/archive/v2.3.0.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"

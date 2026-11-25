@@ -5,8 +5,13 @@ hash = "87b9233a74325e95011670ed20bbd0d4"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "57f1863"
-hash = "954922c883778c19c4a2dad5be08787f"
+rev = "598cdb6"
+hash = "d99cfbc3812e7738505f9e4bedb759cd"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:zoom"
+rev = "b9946d9"
+hash = "fa268cb59989a87780605fdcfb8d99a9"
 
 [flavor]
 deps = []

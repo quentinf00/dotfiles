@@ -1,0 +1,14 @@
+{
+  "console": {
+    "edit_mode": "vi",
+    "syntax_theme": "material",
+    "set_cursor_shape": false,
+    "log_level": "debug"
+  },
+  "edit": {
+    "app": "edit",
+    "show_cell_borders": true,
+    "autoformat": true,
+    "clipboard": "internal"
+  }
+}

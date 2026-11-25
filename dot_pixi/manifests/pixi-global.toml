@@ -2,8 +2,8 @@ version = 1
 
 [envs.jupyterlab]
 channels = ["conda-forge"]
-dependencies = { jupyterlab = "*" , jupyter_console = "*", ipywidgets = "*", watchfiles = "*", jupyter_events = "*" , jupyter = "*" , jupytext = "*" , pynvim = "*", pillow = "*", cairosvg = "*" , euporie = "*" , timg = "*" }
-exposed = { jupyter-lab = "jupyter-lab", jupyter-labextension = "jupyter-labextension", jupyter-labhub = "jupyter-labhub", jlpm = "jlpm", jupyter-console = "jupyter-console", watchfiles = "watchfiles", jupyter-events = "jupyter-events", jupyter = "jupyter", jupytext = "jupytext", jupytext-config = "jupytext-config", pynvim-python = "pynvim-python", cairosvg = "cairosvg", euporie = "euporie", euporie-console = "euporie-console", euporie-notebook = "euporie-notebook", euporie-preview = "euporie-preview", euporie-hub = "euporie-hub" }
+dependencies = { jupyterlab = "*" , jupyter_console = "*", ipywidgets = "*", watchfiles = "*", jupyter_events = "*" , jupyter = "*" , jupytext = "*" , pynvim = "*", pillow = "*", cairosvg = "*" , euporie = "*" , timg = "*", python = "3.11.*", ipython = "*", pandas = "*", pyarrow = "*", xarray = "*", zarr = "*", h5netcdf = "*", netcdf4 = "*", omegaconf = "*" }
+exposed = { ipython = "ipython", jupyter-lab = "jupyter-lab", jupyter-labextension = "jupyter-labextension", jupyter-labhub = "jupyter-labhub", jlpm = "jlpm", jupyter-console = "jupyter-console", watchfiles = "watchfiles", jupyter-events = "jupyter-events", jupyter = "jupyter", jupytext = "jupytext", jupytext-config = "jupytext-config", pynvim-python = "pynvim-python", cairosvg = "cairosvg", euporie = "euporie", euporie-console = "euporie-console", euporie-notebook = "euporie-notebook", euporie-preview = "euporie-preview", euporie-hub = "euporie-hub" }
 
 [envs.dvc]
 channels = ["conda-forge"]
@@ -157,7 +157,7 @@ exposed = { cookiecutter = "cookiecutter" }
 
 [envs.yazi]
 channels = ["conda-forge"]
-dependencies = { yazi = "*", chafa = "*", python = "3.11.*", xarray = "*", zarr = "*", h5netcdf = "*" , dask = "*" , netcdf4 = "*" , pytorch-cpu = "*", lovely-tensors = "*" }
+dependencies = { yazi = "*", chafa = "*", python = "3.11.*", xarray = "*", zarr = "*", h5netcdf = "*" , dask = "*" , netcdf4 = "*" , pytorch-cpu = "*", lovely-tensors = "*" , imagemagick = "*" }
 exposed = { yazi = "yazi", ya = "ya", chafa = "chafa"}
 
 [envs.zoxide]
@@ -205,3 +205,82 @@ channels = ["conda-forge"]
 dependencies = { 7zip = "*" }
 exposed = { 7z = "7z", 7za = "7za", 7zr = "7zr", 7zz = "7zz" }
 
+[envs.visidata]
+channels = ["conda-forge"]
+dependencies = { visidata = "*", yaml = "*" , pyyaml = "*", xclip = "*" , pyarrow = "*" }
+exposed = { vd = "vd", "vd2to3.vdx" = "vd2to3.vdx", visidata = "visidata", xclip = "xclip", xclip-copyfile = "xclip-copyfile", xclip-cutfile = "xclip-cutfile", xclip-pastefile = "xclip-pastefile" }
+
+[envs.fx]
+channels = ["conda-forge"]
+dependencies = { fx = "*" }
+exposed = { fx = "fx" }
+
+[envs.d2]
+channels = ["conda-forge"]
+dependencies = { d2 = "*" }
+exposed = { d2 = "d2" }
+
+[envs.resvg]
+channels = ["conda-forge"]
+dependencies = { resvg = "*" }
+exposed = { resvg = "resvg" }
+
+[envs.pdf2image]
+channels = ["conda-forge"]
+dependencies = { pdf2image = "*" }
+exposed = { pdftoppm = "pdftoppm" }
+
+[envs.pixi-pack]
+channels = ["conda-forge"]
+dependencies = { pixi-pack = "*" }
+exposed = { pixi-pack = "pixi-pack" }
+
+[envs.pixi-browse]
+channels = ["conda-forge"]
+dependencies = { pixi-browse = "*" }
+exposed = { pixi-browse = "pixi-browse" }
+
+[envs.py-spy]
+channels = ["conda-forge"]
+dependencies = { py-spy = "*" }
+exposed = { py-spy = "py-spy" }
+
+[envs.bottom]
+channels = ["conda-forge"]
+dependencies = { bottom = "*" }
+exposed = { btm = "btm" }
+
+[envs.turm]
+channels = ["conda-forge"]
+dependencies = { turm = "*" }
+exposed = { turm = "turm" }
+
+[envs.glow-md]
+channels = ["conda-forge"]
+dependencies = { glow-md = "*" }
+exposed = { glow = "glow" }
+
+[envs.rust]
+channels = ["conda-forge"]
+dependencies = { rust = "*" }
+exposed = { cargo = "cargo", cargo-clippy = "cargo-clippy", cargo-fmt = "cargo-fmt", clippy-driver = "clippy-driver", rust-gdb = "rust-gdb", rust-gdbgui = "rust-gdbgui", rust-lldb = "rust-lldb", rustc = "rustc", rustdoc = "rustdoc", rustfmt = "rustfmt" }
+
+[envs.pnpm]
+channels = ["conda-forge"]
+dependencies = { pnpm = "*" }
+exposed = { pn = "pn", pnpm = "pnpm", pnpx = "pnpx", pnx = "pnx" }
+
+[envs.tmux]
+channels = ["conda-forge"]
+dependencies = { tmux = ">=3.6" }
+exposed = { tmux = "tmux" }
+
+[envs.pandoc]
+channels = ["conda-forge"]
+dependencies = { pandoc = "*" }
+exposed = { pandoc = "pandoc", pandoc-lua = "pandoc-lua", pandoc-server = "pandoc-server" }
+
+[envs.ghostty]
+channels = ["conda-forge"]
+dependencies = { ghostty = "*" }
+exposed = { ghostty = "ghostty" }

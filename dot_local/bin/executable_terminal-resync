@@ -1,0 +1,138 @@
+#!/usr/bin/python3
+"""Refresh tmux pixel dimensions after changing the outer terminal's font size.
+
+Run in an attached tmux session, or use the Ctrl-q R binding. A short-lived
+helper window queries the outer terminal without consuming an application's
+input. Does not restart applications or alter their cached internal state.
+"""
+import argparse
+import fcntl
+import os
+from pathlib import Path
+import re
+import select
+import shutil
+import signal
+import struct
+import subprocess
+import sys
+import termios
+import time
+import tty
+
+
+def tmux(*args):
+    installed = Path.home() / '.pixi/envs/tmux/bin/tmux'
+    executable = str(installed) if installed.is_file() else shutil.which('tmux')
+    if not executable:
+        raise RuntimeError('tmux is not installed')
+    command = [executable]
+    if os.environ.get('TMUX'):
+        command += ['-S', os.environ['TMUX'].rsplit(',', 2)[0]]
+    return subprocess.check_output(command + list(args), text=True).strip()
+
+
+def client_info(client):
+    for line in tmux('list-clients', '-F',
+                     '#{client_tty}|#{client_pid}|#{session_id}|#{window_id}').splitlines():
+        name, pid, session, window = line.split('|')
+        if name == client:
+            return int(pid), session, window
+    raise RuntimeError('client is no longer attached: ' + client)
+
+
+def get_size(fd):
+    return struct.unpack('HHHH', fcntl.ioctl(fd, termios.TIOCGWINSZ, b'\0' * 8))
+
+
+def set_size(fd, rows, columns, cell_width, cell_height):
+    width, height = columns * cell_width, rows * cell_height
+    if not (0 < width <= 65535 and 0 < height <= 65535):
+        raise RuntimeError('terminal pixel dimensions are outside the supported range')
+    fcntl.ioctl(fd, termios.TIOCSWINSZ, struct.pack('HHHH', rows, columns, width, height))
+
+
+def query_cell_size():
+    fd = os.open('/dev/tty', os.O_RDWR | os.O_NOCTTY)
+    previous = termios.tcgetattr(fd)
+    try:
+        tty.setraw(fd)
+        # The doubled ESC passes CSI 16 t through tmux directly to Ghostty.
+        os.write(fd, b'\x1bPtmux;\x1b\x1b[16t\x1b\\')
+        response = b''
+        deadline = time.monotonic() + 3
+        while time.monotonic() < deadline:
+            if select.select([fd], [], [], max(0, deadline - time.monotonic()))[0]:
+                response += os.read(fd, 4096)
+                match = re.search(rb'\x1b\[6;(\d+);(\d+)t', response)
+                if match:
+                    height, width = map(int, match.groups())
+                    if width > 0 and height > 0:
+                        return width, height
+        raise RuntimeError('terminal did not report its cell size; check tmux allow-passthrough')
+    finally:
+        termios.tcsetattr(fd, termios.TCSANOW, previous)
+        os.close(fd)
+
+
+def worker(client, return_window):
+    try:
+        width, height = query_cell_size()
+        pid, _, _ = client_info(client)
+        fd = os.open(client, os.O_RDWR | os.O_NOCTTY)
+        try:
+            rows, columns, _, _ = get_size(fd)
+            changed_columns = columns - 1 if columns > 1 else columns + 1
+            # A real column change makes tmux propagate updated pixels to panes,
+            # including when the terminal font changed without a grid change.
+            try:
+                set_size(fd, rows, changed_columns, width, height)
+                os.kill(pid, signal.SIGWINCH)
+                time.sleep(0.2)
+            finally:
+                now_rows, now_columns, _, _ = get_size(fd)
+                # Preserve a genuine terminal resize arriving during the helper.
+                if (now_rows, now_columns) == (rows, changed_columns):
+                    now_rows, now_columns = rows, columns
+                set_size(fd, now_rows, now_columns, width, height)
+                os.kill(pid, signal.SIGWINCH)
+            time.sleep(0.2)
+        finally:
+            os.close(fd)
+        tmux('display-message', '-c', client,
+             'Terminal resynced: %dx%d px/cell. Reopen Yazi if its preview is still stale.' % (width, height))
+    finally:
+        tmux('select-window', '-t', return_window)
+        tmux('refresh-client', '-t', client)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--client', help='attached client tty (normally detected automatically)')
+    parser.add_argument('--worker', action='store_true', help=argparse.SUPPRESS)
+    parser.add_argument('--return-window', help=argparse.SUPPRESS)
+    args = parser.parse_args()
+    if not os.environ.get('TMUX'):
+        raise RuntimeError('run terminal-resync inside tmux')
+    if args.worker:
+        worker(args.client, args.return_window)
+        return
+    client = args.client
+    if not client:
+        clients = tmux('list-clients', '-F', '#{client_tty}').splitlines()
+        if len(clients) != 1:
+            raise RuntimeError('specify --client /dev/pts/N when multiple clients are attached')
+        client = clients[0]
+    _, session, window = client_info(client)
+    # Separate tmux command arguments avoid shell interpretation of client data.
+    tmux('new-window', '-t', session + ':', '-n', 'terminal-resync',
+         sys.executable, str(Path(__file__).resolve()), '--worker', '--client', client,
+         '--return-window', session + ':' + window)
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except (RuntimeError, OSError, subprocess.SubprocessError) as error:
+        print('terminal-resync: %s' % error, file=sys.stderr)
+        sys.exit(1)

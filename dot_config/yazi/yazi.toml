@@ -1,11 +1,23 @@
 [preview]
-max_width       = 1200
-max_height      = 1800
+max_width       = 3840
+max_height      = 2160
 
 [mgr]
-ratio = [1, 1, 2]
+ratio = [1, 2, 5]
 
 [plugin]
+[[plugin.prepend_previewers]]
+url = "*.md"
+run = 'piper -- CLICOLOR_FORCE=1 glow --width="$w" --style=dark < "$1"'
+
+[[plugin.prepend_previewers]]
+url = "*.markdown"
+run = 'piper -- CLICOLOR_FORCE=1 glow --width="$w" --style=dark < "$1"'
+
+[[plugin.prepend_previewers]]
+mime = "text/markdown"
+run = 'piper -- CLICOLOR_FORCE=1 glow --width="$w" --style=dark < "$1"'
+
 [[plugin.prepend_previewers]]
 url = "*.pt"
 run = 'pytorch'
@@ -50,9 +62,27 @@ run = 'piper -- eza -TL=3 --color=always --icons=always --group-directories-firs
 url = "*.ipynb"
 run  = 'piper -- nbp --no-paging --nerd-font --decorated --no-files --unicode --color --images --color-system=standard --theme=ansi_dark "$1"'
 
-# prepend_preloaders = [  
-#   { url = "*.csv", run = "duckdb", multi = false },  
-#   { url = "*.tsv", run = "duckdb", multi = false },  
-#   { url = "*.json", run = "duckdb", multi = false },  
-#   { url = "*.parquet", run = "duckdb", multi = false },
-# ]
+[[plugin.prepend_preloaders]]
+url = "*.csv"
+run = "duckdb"
+multi = false
+
+[[plugin.prepend_preloaders]]
+url = "*.tsv"
+run = "duckdb"
+multi = false
+
+[[plugin.prepend_preloaders]]
+url = "*.json"
+run = "duckdb"
+multi = false
+
+[[plugin.prepend_preloaders]]
+url = "*.parquet"
+run = "duckdb"
+multi = false
+
+[[plugin.prepend_preloaders]]
+url = "*.jsonl"
+run = "duckdb"
+multi = false

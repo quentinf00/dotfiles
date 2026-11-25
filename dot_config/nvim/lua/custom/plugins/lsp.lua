@@ -1,13 +1,13 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
+     dependencies = {
       { "folke/lazydev.nvim", ft = "lua", opts = {} },
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      { "williamboman/mason.nvim", lazy = true },
+      { "williamboman/mason-lspconfig.nvim", lazy = true },
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
-      { "j-hui/fidget.nvim", opts = {} },
+       { "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
 
       -- Autoformatting
       "stevearc/conform.nvim",

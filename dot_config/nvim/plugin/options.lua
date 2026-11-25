@@ -34,3 +34,6 @@ opt.clipboard = "unnamedplus"
 
 -- Don't have `o` add a comment
 opt.formatoptions:remove "o"
+
+opt.foldlevel = 99
+opt.foldlevelstart = 99

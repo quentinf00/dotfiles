@@ -1,4 +1,5 @@
-format = """$hostname $directory\
+
+format = """$time $hostname $directory\
 $git_branch\
 $conda
 ${env_var.CUDA_VISIBLE_DEVICES}\
@@ -47,3 +48,8 @@ error_symbol = '[xx>](bold red)'
 [cmd_duration]
 min_time = 5000
 format = 'took [$duration](bold yellow)'
+
+[time]
+disabled = false
+format = '🕙[\[ $time \]]($style) '
+time_format = '%T'
