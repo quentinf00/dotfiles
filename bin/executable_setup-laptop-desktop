@@ -1,0 +1,129 @@
+#!/bin/bash
+set -eo pipefail
+
+desktop_exec() {
+  local path=$1
+  # The desktop file parser unescapes the value before parsing Exec arguments.
+  path=${path//\\/\\\\\\\\}
+  path=${path//\"/\\\\\"}
+  path=${path//\$/\\\\\$}
+  path=${path//\`/\\\\\`}
+  path=${path//%/%%}
+  printf '"%s"' "$path"
+}
+
+install_ghostty_launcher() {
+  local pixi_home=${PIXI_HOME:-$HOME/.pixi} app_id=com.mitchellh.ghostty
+  local share=$pixi_home/envs/ghostty/share
+  local data_home=${XDG_DATA_HOME:-$HOME/.local/share}
+  local entry=$share/applications/$app_id.desktop icon
+  local -a icons
+  shopt -s nullglob
+  icons=("$share/icons/hicolor/"*/apps/"$app_id.png")
+  if [[ ! -x $pixi_home/bin/ghostty || ! -r $entry || ${#icons[@]} == 0 ]]; then
+    printf 'Ghostty launcher or icons are missing from the Pixi environment at %s\n' "$pixi_home" >&2
+    return 1
+  fi
+
+  for icon in "${icons[@]}"; do
+    install -Dm644 "$icon" "$data_home/${icon#"$share/"}"
+  done
+  mkdir -p "$data_home/applications"
+  GHOSTTY_EXEC=$(desktop_exec "$pixi_home/bin/ghostty") awk '
+    /^TryExec=ghostty$/ { next }
+    /^Exec=ghostty([[:space:]]|$)/ { $0 = "Exec=" ENVIRON["GHOSTTY_EXEC"] substr($0, 13) }
+    /^DBusActivatable=/ { $0 = "DBusActivatable=false" }
+    { print }
+  ' "$entry" > "$data_home/applications/$app_id.desktop"
+  if command -v update-desktop-database &>/dev/null; then
+    update-desktop-database "$data_home/applications"
+  fi
+}
+
+install_nerd_font() (
+  local font_dir=${XDG_DATA_HOME:-$HOME/.local/share}/fonts/JetBrainsMonoNerdFont
+  if [[ -f $font_dir/JetBrainsMonoNerdFont-Regular.ttf ]] ||
+    { command -v fc-match &>/dev/null && [[ $(fc-match -f '%{family[0]}' 'JetBrainsMono Nerd Font') == 'JetBrainsMono Nerd Font' ]]; }; then
+    return
+  fi
+
+  local scratch
+  scratch=$(mktemp -d)
+  trap 'rm -rf -- "$scratch"' EXIT
+  cd "$scratch"
+  curl -fsSL https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/JetBrainsMono.tar.xz -o JetBrainsMono.tar.xz
+  printf '%s  %s\n' 04d5e8f903693f9dd13e16f867e994834e681eb3c72c0d337a770dcda09010cf JetBrainsMono.tar.xz | sha256sum --check --status
+  tar -xJf JetBrainsMono.tar.xz --wildcards 'JetBrainsMonoNerdFont-*.ttf' OFL.txt
+  mkdir -p "$font_dir"
+  install -m644 JetBrainsMonoNerdFont-*.ttf OFL.txt "$font_dir/"
+  if command -v fc-cache &>/dev/null; then
+    fc-cache "$font_dir"
+  fi
+)
+
+caps_ctrl_options() {
+  local option
+  local -a options
+  IFS=, read -r -a options <<< "$1"
+  for option in "${options[@]}"; do
+    case $option in
+      ''|caps:*|ctrl:nocaps|ctrl:swapcaps*|grp:*caps*|lv3:caps*|compose:caps*) ;;
+      *) printf '%s,' "$option" ;;
+    esac
+  done
+  printf 'ctrl:nocaps'
+}
+
+remap_x11_caps() {
+  local current
+  current=$(setxkbmap -query | awk '$1 == "options:" { print $2 }')
+  setxkbmap -option '' -option "$(caps_ctrl_options "$current")"
+}
+
+remap_caps() {
+  local current updated config_tool read_tool gvariant_separator="', '"
+  case ":${XDG_CURRENT_DESKTOP^^}:" in
+    *:GNOME:*|*:UNITY:*)
+      current=$(gsettings get org.gnome.desktop.input-sources xkb-options)
+      current=${current#@as }
+      current=$(printf '%s' "$current" | tr -d "[]' ")
+      updated=$(caps_ctrl_options "$current")
+      gsettings set org.gnome.desktop.input-sources xkb-options "['${updated//,/$gvariant_separator}']"
+      ;;
+    *:KDE:*)
+      if command -v kwriteconfig6 &>/dev/null; then
+        config_tool=kwriteconfig6 read_tool=kreadconfig6
+      else
+        config_tool=kwriteconfig5 read_tool=kreadconfig5
+      fi
+      current=$("$read_tool" --file kxkbrc --group Layout --key Options)
+      "$config_tool" --file kxkbrc --group Layout --key Options "$(caps_ctrl_options "$current")"
+      "$config_tool" --file kxkbrc --group Layout --key ResetOldOptions true
+      ;;
+    *)
+      if [[ ${XDG_SESSION_TYPE:-} == x11 ]] && command -v setxkbmap &>/dev/null; then
+        local autostart=${XDG_CONFIG_HOME:-$HOME/.config}/autostart
+        mkdir -p "$autostart"
+        cat > "$autostart/caps-lock-as-ctrl.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=Caps Lock as Ctrl
+Exec=$(desktop_exec "$HOME/bin/setup-laptop-desktop") --x11-caps
+NoDisplay=true
+EOF
+        remap_x11_caps
+      else
+        printf 'Caps Lock setting skipped. Run setup-laptop-desktop from a GNOME, Plasma, or X11 session.\n'
+      fi
+      ;;
+  esac
+}
+
+if [[ ${1:-} == --x11-caps ]]; then
+  [[ ${XDG_SESSION_TYPE:-} != x11 ]] || remap_x11_caps
+  exit
+fi
+
+install_ghostty_launcher
+install_nerd_font
+remap_caps

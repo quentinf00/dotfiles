@@ -1,6 +1,6 @@
 #!/bin/bash
 set -eo pipefail
-export PATH="$HOME/.local/bin:$HOME/.pixi/bin:$PATH"
+export PATH="$HOME/.local/bin:${PIXI_HOME:-$HOME/.pixi}/bin:$PATH"
 
 function is_exe() {
     command -v "$1" &> /dev/null
@@ -52,4 +52,6 @@ echo "###### Step 5: Installing pixi global packages"
 echo "######"
 pixi global sync
 
-
+if [[ "$(chezmoi execute-template '{{ if get . "isLaptop" }}yes{{ end }}')" == yes ]]; then
+	"$HOME/bin/setup-laptop-desktop"
+fi
